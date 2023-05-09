@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -23,5 +24,10 @@ public class ContactService {
     }
     public void deleteById(Long id) {
         contactRepository.deleteById(id);
+    }
+
+    public Contact findById(Long id) {
+        Optional<Contact> optionalContact = contactRepository.findById(id);
+        return  optionalContact.orElse(null);
     }
 }

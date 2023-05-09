@@ -58,45 +58,5 @@ public class ContactController {
         model.addAttribute("contacts", contacts);
         return "home";
     }
-//    @GetMapping("/{id}")
-//    public String deleteContact(@PathVariable Long id) {
-//        contactService.deleteById(id);
-//        return "home";
-//    }
-
 }
-
-
-//    @PostMapping("/save-contacts")
-//    public String createContact(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-//                                @RequestParam String phoneNumber, @ModelAttribute User user, Model model) {
-//        System.out.println(user.getEmail());
-//        userService.save(user);
-//        Contact contact = new Contact(firstName, lastName, email, phoneNumber, user);
-//        contactService.save(contact);
-//        List<Contact> contacts = user.getContacts();
-//        contacts.add(contact);
-//        model.addAttribute("user", user);
-//        model.addAttribute("contacts", contacts);
-//        return "home";
-//    }
-//}
-
-
-//    @PreAuthorize("isAuthenticated()")
-//    @PostMapping("/save-contacts")
-//    public String createContact(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String phoneNumber, HttpServletRequest request) {
-//        Principal principal = request.getUserPrincipal();
-//        if (principal != null) {
-//            String email = principal.getName();
-//            User user = userService.findByEmail(email);
-//            if (user != null) {
-//                Contact contact = new Contact(firstName, lastName, email, phoneNumber, user);
-//                contactService.save(contact);
-//                return "home";
-//            }
-//            return "erreur " + principal;
-//        }
-//        return firstName;
-//    }
 

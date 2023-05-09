@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-<form action="/home/save-contacts" method="POST">
+<form  class="mt-4" action="/home/save-contacts" method="POST">
     <label for="firstName">Prénom :</label>
     <input type="text" id="firstName" name="firstName" required>
 
@@ -20,37 +20,26 @@
     <input type="tel" id="phoneNumber" name="phoneNumber" required>
     <input type="hidden" id="userId" name="userId" th:value="${user.id}">
 
-    <button type="submit">Enregistrer</button>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
 </form>
 
 <h1>List des contacts</h1>
-<a th:href="@{/logout}">Se déconnecter</a>
-<a th:href="@{/profil/{id}(id=${user.getId()})}">profil</a>
-
-
+<a  class="btn btn-danger" th:href="@{/logout}">Se déconnecter</a>
+<a class="btn btn-success" th:href="@{/profil/{id}(id=${user.getId()})}">profil</a>
 
 <p th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"></p>
-<p th:text="${user.getEmail()}"></p>
-<p th:text="${user}"></p>
 
 
-<div th:each="contact : ${contacts}">
-    <p th:text="${contact.getFirstName()} + ' ' + ${contact.getLastName()}"></p>
-    <p th:text="${contact.getEmail()}"></p>
-    <p th:text="${contact.getPhoneNumber()}"></p><br>
-<!--    <form th:action="@{/home/{id}(id=${contact.getId()})}" method="post">-->
-<!--        <button type="submit">Supprimer</button>-->
-<!--    </form>-->
+<div class="container" style="display: grid;grid-template-columns: repeat(3, 1fr);grid-column-gap: 10px;
+grid-row-gap: 10px;">
+    <div th:each="contact : ${contacts}" >
+        <p th:text="${contact.getFirstName()} + ' ' + ${contact.getLastName()}"></p>
+        <p th:text="${contact.getEmail()}"></p>
+        <p th:text="${contact.getPhoneNumber()}"></p><br>
 
-
-<!--    <a th:href="@{/home/{id}(id=${contact.getId()})}" class="btn btn-danger" th:data-method="delete">Delete</a>-->
-    <a th:href="@{/delete-contact(id=${contact.getId()})}" class="btn btn-info">Supprimer</a>
+        <a th:href="@{/delete-contact(id=${contact.getId()})}" class="btn btn-danger">Supprimer</a>
+        <a th:href="@{/edit/{idu}/{id}(idu=${user.getId()},id=${contact.getId()})}" class="btn btn-info">Edit</a>
+    </div>
 </div>
-
-
-
-
-
-
 </body>
 </html>
