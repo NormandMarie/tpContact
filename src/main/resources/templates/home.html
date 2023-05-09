@@ -26,7 +26,7 @@
 <form th:action="@{/home/search}" method="post">
     <div class="input-group mb-3">
         <input type="text" name="searchText" class="form-control" placeholder="recherche dans les contacts">
-        <input type="hidden" id="userId" name="userId" th:value="${user.id}">
+        <input type="hidden" id="userId2" name="userId" th:value="${user.id}">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>
@@ -36,6 +36,7 @@
 <h1>List des contacts</h1>
 <a  class="btn btn-danger" th:href="@{/logout}">Se déconnecter</a>
 <a class="btn btn-success" th:href="@{/profil/{id}(id=${user.getId()})}">profil</a>
+<a class="btn btn-dark" th:href="@{/api/{userId}/contacts(userId=${user.id})}">api</a>
 
 <p th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"></p>
 
