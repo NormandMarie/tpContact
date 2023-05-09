@@ -1,30 +1,21 @@
 package fr.normand.tpcontact.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "contacts")
-public class Contact {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContactDTO {
     private Long id;
-
-
     private String firstName;
-
-
     private String lastName;
-
-
     private String email;
-
     private String phoneNumber;
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
 
-    private User user;
+    public ContactDTO(Long id, String firstName, String lastName, String email, String phoneNumber) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    // getters and setters
 
     public Long getId() {
         return id;
@@ -64,24 +55,5 @@ public class Contact {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Contact() {
-    }
-
-    public Contact(String firstName, String lastName, String email, String phoneNumber, User user) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.user = user;
     }
 }
