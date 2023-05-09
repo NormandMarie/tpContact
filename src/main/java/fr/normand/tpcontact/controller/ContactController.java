@@ -27,7 +27,7 @@ public class ContactController {
     @Autowired
     private HttpServletRequest request;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping
     public String homePage(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -58,5 +58,15 @@ public class ContactController {
         model.addAttribute("contacts", contacts);
         return "home";
     }
-}
+
+        @PostMapping("/search")
+        public String searchContacts(@RequestParam(name = "searchText") String searchText, Model model,@RequestParam Long userId) {
+            User user = userService.findById(userId);
+            List<Contact> contacts = contactService.searchContactsByName(searchText,user);
+            model.addAttribute("user", user);
+            model.addAttribute("contacts", contacts);
+            model.addAttribute("searchText", searchText);
+            return "search-results";
+        }
+    }
 

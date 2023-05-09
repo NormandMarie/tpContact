@@ -11,4 +11,5 @@ import java.util.List;
 public interface ContactRepository extends JpaRepository<Contact,Long> {
     List<Contact> findAllByUser(User user);
     void deleteById(Long id);
+
 }

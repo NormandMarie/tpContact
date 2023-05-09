@@ -7,6 +7,7 @@ import fr.normand.tpcontact.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +31,19 @@ public class ContactService {
         Optional<Contact> optionalContact = contactRepository.findById(id);
         return  optionalContact.orElse(null);
     }
+
+    public List<Contact> searchContactsByName(String searchText, User user) {
+        List<Contact> contacts = contactRepository.findAllByUser(user);
+        List<Contact> matchingContacts = new ArrayList<>();
+
+        for (Contact contact : contacts) {
+            if (contact.getFirstName().toLowerCase().contains(searchText.toLowerCase())
+                    || contact.getLastName().toLowerCase().contains(searchText.toLowerCase())) {
+                matchingContacts.add(contact);
+            }
+        }
+
+        return matchingContacts;
+    }
+
 }

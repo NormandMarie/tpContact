@@ -22,6 +22,16 @@
 
     <button class="btn btn-primary" type="submit">Enregistrer</button>
 </form>
+<!-- Ajouter le formulaire de recherche -->
+<form th:action="@{/home/search}" method="post">
+    <div class="input-group mb-3">
+        <input type="text" name="searchText" class="form-control" placeholder="recherche dans les contacts">
+        <input type="hidden" id="userId" name="userId" th:value="${user.id}">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
 
 <h1>List des contacts</h1>
 <a  class="btn btn-danger" th:href="@{/logout}">Se déconnecter</a>
