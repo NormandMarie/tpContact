@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<h1>List des contact</h1>
+<a th:href="@{/logout}">Se déconnecter</a>
+<div th:each="contact : ${contacts}">
+    <p th:text="${contact.getFirstName()} + ' ' + ${contact.getLastName()}"></p>
+    <p th:text="${contact.getEmail()}"></p>
+    <p th:text="${contact.getPhoneNumber()}"></p>
+</div>
+
+</body>
+</html>
