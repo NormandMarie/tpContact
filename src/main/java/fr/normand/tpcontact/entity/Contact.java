@@ -74,4 +74,12 @@ public class Contact {
 
     public Contact() {
     }
+
+    public Contact(String firstName, String lastName, String email, String phoneNumber, User user) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.user = user;
+    }
 }

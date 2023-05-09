@@ -4,9 +4,9 @@ import fr.normand.tpcontact.entity.User;
 import fr.normand.tpcontact.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -25,5 +25,9 @@ public class UserService {
         return userRepository.findByEmailAndPassword(email,password);
     }
 
+    public User findById(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        return optionalUser.orElse(null);
+    }
     // Autres méthodes pour accéder aux utilisateurs, les modifier ou les supprimer
 }
