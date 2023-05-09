@@ -25,6 +25,8 @@
 
 <h1>List des contacts</h1>
 <a th:href="@{/logout}">Se déconnecter</a>
+<a th:href="@{/profil/{id}(id=${user.getId()})}">profil</a>
+
 
 
 <p th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"></p>
@@ -43,7 +45,6 @@
 
 <!--    <a th:href="@{/home/{id}(id=${contact.getId()})}" class="btn btn-danger" th:data-method="delete">Delete</a>-->
     <a th:href="@{/delete-contact(id=${contact.getId()})}" class="btn btn-info">Supprimer</a>
-
 </div>
 
 
