@@ -28,7 +28,7 @@ public class LoginController {
     System.out.println(user.getContacts());
     if (user != null) {
           List<Contact> contacts = user.getContacts();
-
+        model.addAttribute("user", user);
           model.addAttribute("contacts", contacts);
         return "home";
     } else {
