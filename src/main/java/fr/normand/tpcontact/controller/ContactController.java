@@ -58,6 +58,11 @@ public class ContactController {
         model.addAttribute("contacts", contacts);
         return "home";
     }
+//    @GetMapping("/{id}")
+//    public String deleteContact(@PathVariable Long id) {
+//        contactService.deleteById(id);
+//        return "home";
+//    }
 
 }
 

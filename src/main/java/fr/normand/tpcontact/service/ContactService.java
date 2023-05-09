@@ -21,4 +21,7 @@ public class ContactService {
     public List<Contact> findAllByUser(User user) {
         return contactRepository.findAllByUser(user);
     }
+    public void deleteById(Long id) {
+        contactRepository.deleteById(id);
+    }
 }
