@@ -58,7 +58,9 @@ public class ContactController {
         model.addAttribute("contacts", contacts);
         return "home";
     }
+
 }
+
 
 //    @PostMapping("/save-contacts")
 //    public String createContact(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
